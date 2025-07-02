@@ -1,0 +1,345 @@
+.app-header {
+  width: 100vw;
+  height: 60px;
+  background-color: #004080;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header-left {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  gap: 10px;
+}
+
+.link-btn {
+  background-color: white;
+  color: #004080;
+  border: 1px solid white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.link-btn:hover {
+  background-color: #e6e6e6;
+  color: #002244;
+  transform: scale(1.05);
+}
+
+/* ✅ Ensures slideshow is centered horizontally */
+.slideshow-wrapper {
+  margin-top: 160px; /* Space below fixed headers */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.slideshow-container {
+  width: 700px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ✅ Global reset */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.second-header {
+  width: 100vw;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 60px; /* Directly below first header */
+  left: 0;
+  z-index: 999;
+  border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.second-header .left-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.second-header .center-content {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.second-header input[type="text"] {
+  width: 300px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.second-header .right-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.second-header .login-btn,
+.second-header .create-btn {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.second-header .login-btn:hover,
+.second-header .create-btn:hover {
+  background-color: #002244;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background-color: #fff;
+  text-align: center;
+}
+
+.form-container input {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container button {
+  background-color: #004080;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #003366;
+}
+
+.right-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.create-btn {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.create-btn:hover {
+  background-color: #002244;
+}
+
+.full-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.welcome-text {
+  font-weight: bold;
+  color: #004080;
+}
+
+.action-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  width: 160px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  background-color: white;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.action-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.icon-img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  margin-top: 50px; /* Space before footer */
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+
+.transfer-form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 25px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.transfer-form-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.transfer-form-container input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.transfer-form-container button {
+  padding: 12px 25px;
+  background-color: royalblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.transfer-form-container button:hover {
+  background-color: darkblue;
+}
+
+.transfer-form-container p {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.view-account-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 25px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.view-account-container button {
+  padding: 10px 20px;
+  background-color: royalblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.view-account-container button:hover {
+  background-color: darkblue;
+}
+
+.account-details {
+  text-align: left;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.account-details p {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
