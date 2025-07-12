@@ -3,27 +3,41 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 
-function Withdraw({ loggedInUser, userPassword }) {
+function Withdraw({ loggedInUser }) {
   const [amount, setAmount] = useState("");
   const navigate = useNavigate();
 
   const handleWithdraw = (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Login required.");
+      return;
+    }
+
+    if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
+      alert("Enter a valid amount.");
+      return;
+    }
+
     const withdrawData = {
-      accountHolderName: loggedInUser, // Case-sensitive: matches backend DTO
-      password: userPassword,
       amount: parseFloat(amount)
     };
 
-    axios.post("http://localhost:8080/api/accounts/withdraw", withdrawData)
+    axios.post("http://localhost:8080/api/accounts/withdraw", withdrawData, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(() => {
         alert("Amount withdrawn successfully!");
         navigate("/");
       })
       .catch((error) => {
         console.error("Withdraw error:", error.response?.data || error.message);
-        alert("Failed to withdraw. Check balance or credentials.");
+        alert("Withdraw failed: " + (error.response?.data || "Check token or balance"));
       });
   };
 

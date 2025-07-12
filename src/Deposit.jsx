@@ -3,26 +3,41 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 
-function Deposit({ loggedInUser, userPassword }) {
+function Deposit({ loggedInUser }) {
   const [amount, setAmount] = useState("");
   const navigate = useNavigate();
 
   const handleDeposit = (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Login required.");
+      return;
+    }
+
+    if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
+      alert("Enter a valid amount.");
+      return;
+    }
+
     const depositData = {
-      accountHolderName: loggedInUser,
-      password: userPassword,
       amount: parseFloat(amount)
     };
 
-    axios.post("http://localhost:8080/api/accounts/deposit", depositData)
+    axios.post("http://localhost:8080/api/accounts/deposit", depositData, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(() => {
         alert("Amount deposited successfully!");
         navigate("/");
       })
-      .catch(() => {
-        alert("Failed to deposit. Check credentials.");
+      .catch((error) => {
+        console.error("Deposit error:", error.response?.data || error.message);
+        alert("Deposit failed: " + (error.response?.data || "Check token or server."));
       });
   };
 

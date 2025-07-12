@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import ViewAccount from "./ViewAccount";
+import "./App.css";
 
 function Login({ onLogin }) {
   const [name, setName] = useState("");
@@ -16,15 +16,24 @@ function Login({ onLogin }) {
       password: password
     };
 
-    axios.post("http://localhost:8080/api/accounts/login", loginData)
-      .then(() => {
-        alert("Login Successful");
-        onLogin(name, password);  // <== Pass username & password to App.jsx state
-        navigate("/");
-      })
-      .catch(() => {
-        alert("Invalid credentials");
-      });
+    axios.post("http://localhost:8080/auth/login", loginData)
+  .then(res => {
+    const token = res.data.token;
+    console.log("Received token:", token);  
+
+    if (token) {
+      localStorage.setItem("token", token);
+      onLogin(name, token);
+      alert("Login successful");
+      navigate("/");
+    } else {
+      alert("Login failed, token not received");
+    }
+  })
+  .catch(err => {
+    console.error(err);  
+    alert("Invalid credentials or server error");
+  });
   };
 
   return (

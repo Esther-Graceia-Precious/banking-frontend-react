@@ -37,7 +37,7 @@ function CreateAccount() {
     const accountData = {
       accountHolderName: name,
       password: password,
-      balance: parseFloat(amount),
+      balance: amount.toString(),
       email: email,
       address: address,
       state: state
@@ -46,7 +46,8 @@ function CreateAccount() {
     axios.post("http://localhost:8080/api/accounts", accountData)
       .then((response) => {
         alert(`Account successfully created! Your Account Number is ${response.data.accountNumber}`);
-        navigate("/");
+       navigate("/login");
+
       })
       .catch((error) => {
         console.error("Error creating account:", error);
