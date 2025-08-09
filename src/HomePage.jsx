@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
-import slide1 from './Components/images/Customer.png';
-import slide2 from './Components/images/Image2.png';
-import slide3 from './Components/images/Image3.png';
+import slide1 from './Components/Images/Customer.png';
+import slide2 from './Components/Images/Image2.png';
+import slide3 from './Components/Images/Image3.png';
 
 function HomePage({ loggedInUser, userPassword, handleLogout }) {
   const [current, setCurrent] = useState(0);
