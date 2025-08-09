@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "./config.jsx";
 
 function TransferMoney() {
   const [recipientAccountNumber, setRecipientAccountNumber] = useState("");
@@ -18,11 +19,9 @@ function TransferMoney() {
       amount
     };
 
-    axios.post("http://localhost:8080/api/accounts/transfer", transferData, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+    axios.post(`${API_BASE_URL}/api/accounts/transfer`, transferData, {
+  headers: { Authorization: `Bearer ${token}` }
+})
       .then(response => {
         alert(response.data);
         setRecipientAccountNumber("");

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+import { API_BASE_URL } from "./config.jsx";
 
 function Deposit({ loggedInUser }) {
   const [amount, setAmount] = useState("");
@@ -26,10 +27,8 @@ function Deposit({ loggedInUser }) {
       amount: parseFloat(amount)
     };
 
-    axios.post("http://localhost:8080/api/accounts/deposit", depositData, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    axios.post(`${API_BASE_URL}/api/accounts/deposit`, depositData, {
+    headers: { Authorization: `Bearer ${token}` }
     })
       .then(() => {
         alert("Amount deposited successfully!");

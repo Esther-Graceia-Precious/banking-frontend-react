@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+import { API_BASE_URL } from "./config.jsx";
 
 function CreateAccount() {
   const [name, setName] = useState("");
@@ -43,12 +44,11 @@ function CreateAccount() {
       state: state
     };
 
-    axios.post("http://localhost:8080/api/accounts", accountData)
-      .then((response) => {
-        alert(`Account successfully created! Your Account Number is ${response.data.accountNumber}`);
-       navigate("/login");
-
-      })
+    axios.post(`${API_BASE_URL}/api/accounts`, accountData)
+  .then((response) => {
+    alert(`Account successfully created! Your Account Number is ${response.data.accountNumber}`);
+    navigate("/login");
+  })
       .catch((error) => {
         console.error("Error creating account:", error);
         alert("Failed to create account. Please try again.");

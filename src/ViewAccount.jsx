@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import { API_BASE_URL } from "./config.jsx";
 
 function ViewAccount({ loggedInUser }) {
   const [accountDetails, setAccountDetails] = useState(null);
@@ -14,12 +15,9 @@ function ViewAccount({ loggedInUser }) {
       return;
     }
 
-    axios
-      .get("http://localhost:8080/api/accounts/view-account", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
+    axios.get(`${API_BASE_URL}/api/accounts/view-account`, {
+    headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => {
         setAccountDetails(response.data);
       })

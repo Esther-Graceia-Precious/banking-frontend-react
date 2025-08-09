@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+import { API_BASE_URL } from "./config.jsx";
 
 function Login({ onLogin }) {
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ function Login({ onLogin }) {
       password: password
     };
 
-    axios.post("http://localhost:8080/auth/login", loginData)
+    aaxios.post(`${API_BASE_URL}/auth/login`, loginData)
   .then(res => {
     const token = res.data.token;
     console.log("Received token:", token);  

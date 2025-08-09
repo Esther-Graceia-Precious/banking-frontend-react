@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "./config.jsx";
 
 function DeleteAccount() {
   const navigate = useNavigate();
@@ -10,10 +11,10 @@ function DeleteAccount() {
 
     const token = localStorage.getItem("token");
 
-    axios.delete("http://localhost:8080/api/accounts/delete", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    axios.delete(`${API_BASE_URL}/api/accounts/delete`, {
+    headers: {
+    Authorization: `Bearer ${token}`
+    }
     })
       .then(() => {
         localStorage.removeItem("token");

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+import { API_BASE_URL } from "./config.jsx";
 
 function Withdraw({ loggedInUser }) {
   const [amount, setAmount] = useState("");
@@ -26,10 +27,8 @@ function Withdraw({ loggedInUser }) {
       amount: parseFloat(amount)
     };
 
-    axios.post("http://localhost:8080/api/accounts/withdraw", withdrawData, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    axios.post(`${API_BASE_URL}/api/accounts/withdraw`, withdrawData, {
+    headers: { Authorization: `Bearer ${token}` }
     })
       .then(() => {
         alert("Amount withdrawn successfully!");
